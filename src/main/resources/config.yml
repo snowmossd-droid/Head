@@ -1,0 +1,51 @@
+head:
+  texture-url: "https://textures.minecraft.net/texture/cfd27d8b218b5aa972fda9054926d7b1b2c0329a456332148fcc3d6c6d34cf0f"
+  name: "&6&lKhánh Ngủ &7[Đặc Biệt]"
+  lore:
+    - "&7Cầm đầu này để nhận:"
+    - "&a✦ Tàng hình"
+    - "&b✦ Tăng tốc độ"
+    - "&c✦ Tăng sức mạnh"
+    - "&d✦ Hồi máu"
+    - "&e✦ Kháng lửa"
+    - ""
+    - "&8[Chỉ được cầm tay, không được đặt]"
+
+effects:
+  invisibility:
+    enabled: true
+    amplifier: 0
+  speed:
+    enabled: true
+    amplifier: 1
+  strength:
+    enabled: true
+    amplifier: 1
+  regeneration:
+    enabled: true
+    amplifier: 2
+  fire-resistance:
+    enabled: true
+    amplifier: 0
+
+messages:
+  no-permission: "&cBạn không có quyền dùng lệnh này!"
+  player-not-found: "&cKhông tìm thấy người chơi: &e{player}"
+  give-success: "&aĐã cho &e{player} &acái đầu đặc biệt!"
+  take-success: "&aĐã lấy đầu đặc biệt từ &e{player}!"
+  take-fail: "&e{player} &ckhông có đầu đặc biệt trong túi đồ!"
+  reload-success: "&aPlugin KhanhNgu đã được reload!"
+  no-player: "&cLệnh này chỉ dùng được trong game!"
+  usage-head: "&eUsage: &f/head <give|take> <player>"
+  usage-khanhngu: "&eUsage: &f/khanhngu <give|take> <player> | /khanhngu reload"
+  effects-applied: "&aĐã kích hoạt các hiệu ứng đặc biệt!"
+  effects-removed: "&cHiệu ứng đặc biệt đã bị xóa!"
+  cannot-place: "&cBạn không thể đặt đầu này xuống đất!"
+
+hints:
+  enabled: true
+  interval: 300
+  messages:
+    - "&6[KhanhNgu] &eCầm đầu &6Khánh Ngủ &eđể nhận sức mạnh tàng hình!"
+    - "&6[KhanhNgu] &eDùng &f/head give <tên> &eđể cho người chơi đầu đặc biệt!"
+    - "&6[KhanhNgu] &eĐầu đặc biệt cho bạn: tàng hình, tốc độ, sức mạnh, hồi máu và kháng lửa!"

@@ -1,0 +1,24 @@
+name: KhanhNgu
+version: 1.0.0
+main: vennlmao.code.KhanhNgu
+api-version: '1.21'
+author: VennLMAO
+description: Hold a special head to gain invisibility, speed, strength and health boost!
+
+commands:
+  head:
+    description: Give or take the special head
+    usage: /head <give|take> <player>
+    permission: khanhngu.admin
+  khanhngu:
+    description: Main plugin command
+    usage: /khanhngu <give|take> <player> | /khanhngu reload
+    permission: khanhngu.admin
+
+permissions:
+  khanhngu.admin:
+    description: Access to KhanhNgu admin commands
+    default: op
+  khanhngu.use:
+    description: Ability to use the special head
+    default: true
