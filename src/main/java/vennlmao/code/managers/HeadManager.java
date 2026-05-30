@@ -1,5 +1,8 @@
 package vennlmao.code.managers;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
+import com.destroystokyo.paper.profile.ProfileProperty;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -8,9 +11,6 @@ import org.bukkit.NamespacedKey;
 import vennlmao.code.KhanhNgu;
 import vennlmao.code.utils.ColorUtils;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
@@ -59,47 +59,13 @@ public class HeadManager {
     }
 
     private void applyTextureFromUrl(SkullMeta meta, String textureUrl) {
-        try {
-            String encodedUrl = Base64.getEncoder().encodeToString(
-                    ("{\"textures\":{\"SKIN\":{\"url\":\"" + textureUrl + "\"}}}").getBytes()
-            );
+        String encodedTexture = Base64.getEncoder().encodeToString(
+                ("{\"textures\":{\"SKIN\":{\"url\":\"" + textureUrl + "\"}}}").getBytes()
+        );
 
-            Class<?> gameProfileClass = Class.forName("com.mojang.authlib.GameProfile");
-            Class<?> propertyClass = Class.forName("com.mojang.authlib.properties.Property");
-            Class<?> propertyMapClass = Class.forName("com.mojang.authlib.properties.PropertyMap");
-
-            Constructor<?> profileCtor = gameProfileClass.getConstructor(UUID.class, String.class);
-            Object profile = profileCtor.newInstance(UUID.randomUUID(), "KhanhNguHead");
-
-            Constructor<?> propertyCtor = propertyClass.getConstructor(String.class, String.class);
-            Object property = propertyCtor.newInstance("textures", encodedUrl);
-
-            Method getProperties = gameProfileClass.getMethod("getProperties");
-            Object propertyMap = getProperties.invoke(profile);
-
-            Method put = propertyMapClass.getMethod("put", Object.class, Object.class);
-            put.invoke(propertyMap, "textures", property);
-
-            Field profileField = findProfileField(meta.getClass());
-            if (profileField != null) {
-                profileField.setAccessible(true);
-                profileField.set(meta, profile);
-            }
-        } catch (Exception e) {
-            plugin.getLogger().warning("Không thể áp dụng texture: " + e.getMessage());
-        }
-    }
-
-    private Field findProfileField(Class<?> clazz) {
-        while (clazz != null) {
-            for (Field field : clazz.getDeclaredFields()) {
-                if (field.getName().equals("profile") || field.getType().getName().equals("com.mojang.authlib.GameProfile")) {
-                    return field;
-                }
-            }
-            clazz = clazz.getSuperclass();
-        }
-        return null;
+        PlayerProfile profile = Bukkit.createProfile(UUID.randomUUID(), "KhanhNguHead");
+        profile.setProperty(new ProfileProperty("textures", encodedTexture));
+        meta.setPlayerProfile(profile);
     }
 
     public boolean isSpecialHead(ItemStack item) {
@@ -113,4 +79,3 @@ public class HeadManager {
         cachedHead = null;
     }
             }
-            
