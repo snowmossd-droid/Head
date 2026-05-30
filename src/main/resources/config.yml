@@ -1,15 +1,15 @@
 head:
   texture-url: "https://textures.minecraft.net/texture/cfd27d8b218b5aa972fda9054926d7b1b2c0329a456332148fcc3d6c6d34cf0f"
-  name: "&6&lKhánh Ngủ &7[Đặc Biệt]"
+  name: "&7[Đặc Biệt]"
   lore:
     - "&7Cầm đầu này để nhận:"
-    - "&a✦ Tàng hình"
+    - "&f✦ Tàng hình"
     - "&b✦ Tăng tốc độ"
-    - "&c✦ Tăng sức mạnh"
-    - "&d✦ Hồi máu"
-    - "&e✦ Kháng lửa"
+    - "&e✦ Tăng sức mạnh"
+    - "&c✦ Hồi máu"
+    - "&6✦ Kháng lửa"
     - ""
-    - "&8[Chỉ được cầm tay, không được đặt]"
+    - "&8[Chỉ được cầm tay]"
 
 effects:
   invisibility:
